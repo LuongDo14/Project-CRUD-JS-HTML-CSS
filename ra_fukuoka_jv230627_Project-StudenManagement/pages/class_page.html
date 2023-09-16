@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Class Management</title>
+    <link rel="stylesheet" href="../css/class_page.css">
+
+
+    <header class="top-side">
+        <a href="../pages/home_page.html"><img src="../Logo-Rikkei.png" alt=""></a>
+        <p class="nd">Để nông dân biết code</p>
+        <div class="position-absolute top-0 start-0"></div>
+        <h2>Hệ thống quản lý sinh viên Rikkei</h2>
+        <button class="btn_logout" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#logout">
+            Đăng xuất
+        </button>
+    </header>
+</head>
+
+<body>
+
+    </button>
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="logOutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn đăng xuất khỏi hệ thống?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnLogout" data-bs-dismiss="modal">Có</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteClassModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận Xóa lớp học</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn Xóa lớp học khỏi hệ thống?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnDelete" data-bs-dismiss="modal">Có</button>
+                    <button type="button" class="btn btn-secondary" id="btnNoDelete" data-bs-dismiss="modal">Không</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul id="side_bar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <li><button type="button" id="btnControlManagement"><i class="fa-solid fa-chart-line"><br></i>Bảng điều
+                khiển</button></li>
+        <li><button type="button" id="btnCourseManagement"><i class="fa-solid fa-list-check"><br>
+                </i>Quản lý khóa học</button></li>
+        <li><button type="button" id="btnClassManagement"><i class="fa-solid fa-bars-progress"><br></i>Quản lý lớp
+                học</button></li>
+        <li><button type="button" id="btnStudentManagement"><i class="fa-solid fa-graduation-cap"></i>Quản lý sinh viên</button></li>
+        <li><button type="button" id="btnAccountManagement"><i class="fa-brands fa-odnoklassniki"></i>Quản lý tài khoản</button></li>
+    </ul>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <h2 id="left-top">QUẢN LÝ LỚP HỌC</h2><br><br>
+    <div class="left_bar" class="control">
+        <button type="button" id="createNew" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createNewClass">
+            Thêm mới
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="createNewClass" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newModalLabel">Thêm mới lớp học</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 row">
+                            <label for="courseIdCreate" class="col-sm-3 col-form-label">Mã khóa học</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="courseIdCreate" name="courseIdCreate" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="courseNameCreate" class="col-sm-3 col-form-label">Tên khóa học <span style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="courseNameCreate" name="courseNameCreate" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="classIdCreate" class="col-sm-3 col-form-label">Mã lớp học <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="classIdCreate" name="classIdCreate"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="classNameCreate" class="col-sm-3 col-form-label">Tên lớp học <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="classNameCreate" name="classNameCreate"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="lecturer" class="col-sm-3 col-form-label">Giảng viên <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lecturer" name="lecturer" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="totalNumber" class="col-sm-3 col-form-label">Sĩ số <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="totalNumber" name="totalNumber"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="description" class="col-sm-3 col-form-label">Mô tả <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="description" name="description" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="statusCreate" class="col-sm-3 col-form-label">Trạng thái</label>
+                            <div class="col-sm-9">
+                                <select name="statusCreate" id="statusCreate">
+                                    <option id="none" checked value="0"></option>
+                                    <option id="dangcho" value="Chờ lớp">Chờ lớp</option>
+                                    <option id="ketthuc" value="Kết thúc">Kết thúc</option>
+                                    <option id="hoatdong" value="Hoạt động">Hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnCreateClass" data-bs-dismiss="modal">Thêm mới</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- Modal -->
+         <div class="modal fade" id="updateClass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Cập nhật lớp học</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 row">
+                            <label for="courseIdUpdate" class="col-sm-3 col-form-label">Mã khóa học</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="courseIdUpdate" name="courseIdUpdate" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="classIdUpdate" class="col-sm-3 col-form-label">Mã lớp học <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="classIdUpdate" name="classIdUpdate"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="classNameUpdate" class="col-sm-3 col-form-label">Tên lớp học <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="classNameUpdate" name="classNameUpdate"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="lecturerUpdate" class="col-sm-3 col-form-label">Giảng viên <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lecturerUpdate" name="lecturerUpdate" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="totalNumberUpdate" class="col-sm-3 col-form-label">Sĩ số <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="totalNumberUpdate" name="totalNumberUpdate"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="descriptionUpdate" class="col-sm-3 col-form-label">Mô tả <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="descriptionUpdate" name="descriptionUpdate" required></textarea>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="courseNameUpdate" class="col-sm-3 col-form-label">Tên khóa học <span style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="courseNameUpdate" name="courseNameUpdate" required/>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="statusCreate" class="col-sm-3 col-form-label">Trạng thái</label>
+                            <div class="col-sm-9">
+                                <select name="statusUpdate" id="statusUpdate">
+                                    <option id="dangcho" checked value="Đang chờ">Chờ lớp</option>
+                                    <option id="ketthuc" value="Kết thúc">Kết thúc</option>
+                                    <option id="hoatdong" value="Hoạt động">Hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="mb-3 row">
+                            <label for="courseName" class="col-sm-3 col-form-label">Khóa học <span
+                                    style="color: red;">(*)</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="courseName" name="courseName"
+                                required />
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnUpdateClass" data-bs-dismiss="modal">Cập nhật</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="text" name="classNameSearch" id="classNameSearch" />
+        <button id="btnSearchClass"  class="btn btn-primary">Tìm kiếm</button>
+        <label for="sort">Sắp xếp</label>
+        <select name="sort" id="sort" onchange="handSortClass()">
+            <option value="">Lựa chọn</option>
+            <option value="classNameASC">Sắp xếp tên tăng dần</option>
+            <option value="classNameDESC">Sắp xếp tên giảm dần</option>
+        </select>
+    </div><br><br>
+    <table id="left-table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Mã lớp</th>
+                <th>Tên lớp</th>
+                <th>Giảng viên</th>
+                <th>Mô tả</th>
+                <th>Sĩ số</th>
+                <th>Trạng thái</th>
+                <th>Khóa học</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody id="listCLass">
+
+        </tbody>
+    </table>
+    <div class="left_bar">
+        <a href="javascript:previewPage()" id="preview">Preview</a>
+        <ul id="listPages">
+        </ul>
+        <a href="javascript:nextPage()" id="next">Next</a>
+    </div>
+
+    <script src="../js/class.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    
+        
+</body>
+<footer>
+    <p id="footer">Copyright Rikkei Academy @2023</p>
+</footer>
+
+</html>

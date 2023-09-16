@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/home_page.css">
+    <title>Student Management</title>
+
+    <header class="top-side">
+        <a href="../pages/home_page.html"><img src="../Logo-Rikkei.png" alt=""></a>
+        <p class="nd">Để nông dân biết code</p>
+        <div class="position-absolute top-0 start-0"></div>
+        <h2>Hệ thống quản lý sinh viên Rikkei</h2>
+        <button class="btn_logout" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#logout">
+            Đăng xuất
+        </button>
+    </header>
+
+</head>
+
+<body>
+    <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn đăng xuất khỏi hệ thống?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnLogout" data-bs-dismiss="modal">Có</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul id="side_bar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <li><button type="button" id="btnControlManagement"><i class="fa-solid fa-chart-line"><br></i>Bảng điều
+                khiển</button></li>
+        <li><button type="button" id="btnCourseManagement"><i class="fa-solid fa-list-check"><br>
+                </i>Quản lý khóa học</button></li>
+        <li><button type="button" id="btnClassManagement"><i class="fa-solid fa-bars-progress"><br></i>Quản lý lớp
+                học</button></li>
+        <li><button type="button" id="btnStudentManagement"><i class="fa-solid fa-graduation-cap"></i>Quản lý sinh viên</button></li>
+        <li><button type="button" id="btnAccountManagement"><i class="fa-brands fa-odnoklassniki"></i>Quản lý tài khoản</button></li>
+    </ul>
+    <button class="openbtn" onclick="openNav()">☰</button>
+    <div class="left_bar">
+        <h3><i class="fa-brands fa-readme"></i>Thống kê khóa học</h3>
+        <ul>
+            <li>
+                <p id="cntCourse">Số khóa học: </p>
+            </li>
+        </ul>
+        <h3><i class="fa-solid fa-landmark"></i>Thống kê lớp học</h3>
+        <ul>
+            <li>
+                <p id="cntClass">Số lớp học:</p><br>
+            </li>
+            <li>
+                <p id="cntClassActive">Số lớp đang hoạt động:</p>
+            </li>
+            <li>
+                <p id="cntClassFinal">Số lớp đã kết thúc:</p><br>
+            </li>
+            <li>
+                <p id="cntClassPending">Số lớp đang chờ:</p>
+            </li>
+        </ul>
+        <h3><i class="fa-solid fa-users"></i>Thống kê sinh viên</h3>
+        <ul>
+            <li>
+                <p id="cntStudent">Tổng số SV:</p>
+            </li>
+            <li>
+                <p id="cntStudentwait">Số SV chờ lớp:</p><br>
+            </li>
+            <li>
+                <p id="cntStudentstudy">Số SV đang học:</p>
+            </li>
+            <li>
+                <p id="cntStudentout">Số SV Bảo lưu/Đình chỉ:</p><br>
+            </li>
+            <li>
+                <p id="cntStudentcongrat">Số SV tốt nghiệp:</p>
+            </li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.11.6/dist/umd/popper.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="../js/home_page.js"></script>
+</body>
+<footer>
+    <p id="footer">Copyright Rikkei Academy @2023</p>
+</footer>
+
+</html>
